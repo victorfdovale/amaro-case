@@ -23,10 +23,10 @@ export class ProductDataBase extends BaseDatabase{
     }
 
     getProductByName = async(name: string) => {
-        const product = await BaseDatabase.connection.raw(`
+        const product: Product[] = await BaseDatabase.connection.raw(`
             SELECT * FROM amaro_products WHERE name = "${name}";
         `)
-        return product
+        return product[0]
     }
 
 }
